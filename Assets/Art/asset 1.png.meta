@@ -52,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -118,10 +118,10 @@ TextureImporter:
       name: asset 1_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 31
-        width: 26
-        height: 29
+        x: 4
+        y: 32
+        width: 24
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +140,10 @@ TextureImporter:
       name: asset 1_1
       rect:
         serializedVersion: 2
-        x: 35
-        y: 31
-        width: 26
-        height: 24
+        x: 36
+        y: 32
+        width: 24
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: asset 1_2
       rect:
         serializedVersion: 2
-        x: 71
-        y: 31
-        width: 18
-        height: 19
+        x: 72
+        y: 32
+        width: 16
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: asset 1_3
       rect:
         serializedVersion: 2
-        x: 3
+        x: 4
         y: 0
-        width: 26
-        height: 28
+        width: 24
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,10 +206,10 @@ TextureImporter:
       name: asset 1_4
       rect:
         serializedVersion: 2
-        x: 39
+        x: 41
         y: 0
-        width: 17
-        height: 30
+        width: 14
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,10 +228,10 @@ TextureImporter:
       name: asset 1_5
       rect:
         serializedVersion: 2
-        x: 66
+        x: 67
         y: 0
-        width: 28
-        height: 29
+        width: 26
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 3d6f9aa4de8177e4e8998751a7140c91
     internalID: 0
     vertices: []
     indices: 
@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      asset 1_0: -3040089333446474237
+      asset 1_1: 4727862505557893924
+      asset 1_2: -1396165669217507649
+      asset 1_3: -5521560912500806696
+      asset 1_4: -7773819109428200848
+      asset 1_5: 8052507361323491588
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

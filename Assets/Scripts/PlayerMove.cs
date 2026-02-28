@@ -1,3 +1,5 @@
+using System;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -10,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     private int inactiveDirection;
     private Vector2[] directions = new Vector2[4];
     static int mirrorLayerMask;
+    static int lampLayerMask;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +27,7 @@ public class PlayerMove : MonoBehaviour
         directions[2] = Vector2.left;
         directions[3] = Vector2.right;
         mirrorLayerMask = LayerMask.GetMask("Mirror");
+        lampLayerMask = LayerMask.GetMask("Lamp");
     }
 
     // Update is called once per frame
@@ -58,10 +62,18 @@ public class PlayerMove : MonoBehaviour
             else { anim.SetBool("uw_right", true); }
         }
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, directions[direction], Mathf.Infinity, mirrorLayerMask);                 
-        if (hit)
-        {
+        RaycastHit2D mirrorHit = Physics2D.Raycast(transform.position - new Vector3(0, 1, 0), directions[direction], 500, mirrorLayerMask);              
+        if (mirrorHit)
+        { 
             inactiveDirection = direction;
+        }
+
+        RaycastHit2D lampHit = Physics2D.Raycast(transform.position - new Vector3(0, 1, 0), directions[direction], 50, lampLayerMask);  
+        if (lampHit)
+        {
+            Debug.Log("Hit the lamp");
+            LampScript ls = lampHit.transform.gameObject.GetComponent<LampScript>();
+            ls.SwitchSprite();
         }
     }
 
