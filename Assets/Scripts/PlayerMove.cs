@@ -1,3 +1,5 @@
+using System;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -58,9 +60,9 @@ public class PlayerMove : MonoBehaviour
             else { anim.SetBool("uw_right", true); }
         }
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, directions[direction], Mathf.Infinity, mirrorLayerMask);                 
+        RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0, 1, 0), directions[direction], 500, mirrorLayerMask);              
         if (hit)
-        {
+        { 
             inactiveDirection = direction;
         }
     }
