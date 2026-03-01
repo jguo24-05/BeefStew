@@ -17,6 +17,7 @@ public class LampScript : MonoBehaviour
         on = true;
         sr = GetComponent<SpriteRenderer>();
         gameLight = GameObject.Find("Global Light 2D");
+        lowerIntensity = 0.20f;
     }
 
     // Update is called once per frame
