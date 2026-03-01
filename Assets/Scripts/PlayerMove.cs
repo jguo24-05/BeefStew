@@ -114,15 +114,18 @@ public class PlayerMove : MonoBehaviour
         if (collider.gameObject.CompareTag("Door") && keys > 0)
         {
             DoorScript ds = collider.gameObject.GetComponent<DoorScript>();
-            ds.StartCoroutine(ds.FadeOut());
+            // ds.StartCoroutine(ds.FadeOut());
             keys--;
+            transform.Translate(ds.nextPosition - transform.position);
         }
     }
 
     void OnCollisionStay2D(Collision2D collision)
     {
+        Debug.Log("Collision stay");
         if (collision.gameObject.CompareTag("Lamp"))
         {
+            Debug.Log("Collision with lamp");
             lamp = collision.gameObject;
             touchingLamp = true;
         }
