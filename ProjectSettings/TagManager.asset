@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Collectible
+  - Lamp
+  - Key
+  - Food
   layers:
   - Default
   - TransparentFX

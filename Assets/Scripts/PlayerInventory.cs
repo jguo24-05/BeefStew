@@ -19,7 +19,7 @@ public class PlayerInventory : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Collectible"))
+        if (collision.gameObject.CompareTag("Food"))
         {
             im.Acquire(collision.gameObject);
             collision.gameObject.SetActive(false);
