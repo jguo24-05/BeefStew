@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    // Movement & physics
     public float speed;
     private Rigidbody2D rb;
-    private Animator anim;
-    public bool well;
     int direction;
     private int inactiveDirection;
     private Vector2[] directions = new Vector2[4];
+
+    // Animations
+    private Animator anim;
+    public bool well;
+
+    // Special mechanics
     static int mirrorLayerMask;
-    static int lampLayerMask;
+    private bool touchingLamp;
+    private bool inTheDark;
+    private GameObject lamp;
+    private int keys;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,12 +35,15 @@ public class PlayerMove : MonoBehaviour
         directions[2] = Vector2.left;
         directions[3] = Vector2.right;
         mirrorLayerMask = LayerMask.GetMask("Mirror");
-        lampLayerMask = LayerMask.GetMask("Lamp");
+        touchingLamp = false;
+        inTheDark = false;
+        keys = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Regular walk controller
         ResetTriggers();
         if (Input.GetKey(KeyCode.W) && inactiveDirection != 0)
         {
@@ -62,18 +73,59 @@ public class PlayerMove : MonoBehaviour
             else { anim.SetBool("uw_right", true); }
         }
 
-        RaycastHit2D mirrorHit = Physics2D.Raycast(transform.position - new Vector3(0, 1, 0), directions[direction], 500, mirrorLayerMask);              
-        if (mirrorHit)
+        // Checks for mirror collisions
+        RaycastHit2D mirrorHit = Physics2D.Raycast(transform.position - new Vector3(0, 1, 0), directions[direction], 500, mirrorLayerMask); 
+        Debug.DrawLine(transform.position, transform.position + (Vector3)(directions[direction] * 500));             
+        if (mirrorHit && !inTheDark)
         { 
+            Debug.Log("Mirror hit");
             inactiveDirection = direction;
         }
 
-        RaycastHit2D lampHit = Physics2D.Raycast(transform.position - new Vector3(0, 1, 0), directions[direction], 50, lampLayerMask);  
-        if (lampHit)
+        // Checks if player is toggling light switch
+        if (touchingLamp)
         {
-            Debug.Log("Hit the lamp");
-            LampScript ls = lampHit.transform.gameObject.GetComponent<LampScript>();
-            ls.SwitchSprite();
+            if (Input.GetKey(KeyCode.F))
+            {
+                Debug.Log("Switched lamp off");
+                LampScript ls = lamp.GetComponent<LampScript>();
+                ls.SwitchSprite();
+                if (!ls.on)
+                {
+                    inactiveDirection = -1;
+                    inTheDark = true;
+                }
+                else
+                {
+                    inTheDark = false;
+                }
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Key"))
+        {
+            collider.gameObject.SetActive(false);
+            keys++;
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Lamp"))
+        {
+            lamp = collision.gameObject;
+            touchingLamp = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Lamp"))
+        {
+            touchingLamp = false;
         }
     }
 
