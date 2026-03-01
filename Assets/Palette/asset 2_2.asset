@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: TopShelf
+  m_Name: asset 2_2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 7482667652216324306, guid: df4b5497ee24d4bf6ab9eb9fd858c662, type: 3}
-  m_Color: {r: 0.7264151, g: 0.50959694, b: 0.38033998, a: 1}
+  m_Sprite: {fileID: 7036094938188624055, guid: 30b628e7201a641389587f930503d1c5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0
@@ -22,7 +22,7 @@ MonoBehaviour:
     e10: 0
     e11: 1
     e12: 0
-    e13: 0.8
+    e13: 0
     e20: 0
     e21: 0
     e22: 1
@@ -32,5 +32,5 @@ MonoBehaviour:
     e32: 0
     e33: 1
   m_InstancedGameObject: {fileID: 0}
-  m_Flags: 3
-  m_ColliderType: 2
+  m_Flags: 1
+  m_ColliderType: 1
