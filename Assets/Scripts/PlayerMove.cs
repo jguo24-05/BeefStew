@@ -110,6 +110,13 @@ public class PlayerMove : MonoBehaviour
             collider.gameObject.SetActive(false);
             keys++;
         }
+
+        if (collider.gameObject.CompareTag("Door") && keys > 0)
+        {
+            DoorScript ds = collider.gameObject.GetComponent<DoorScript>();
+            ds.StartCoroutine(ds.FadeOut());
+            keys--;
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
